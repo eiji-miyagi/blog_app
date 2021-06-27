@@ -20,7 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // resouceでコントローラ全体onlyでその一部の操作を意味する
-Route::resouce('posts','PostController',['only' => ['index','show', 'create', 'store','destroy']]);
 
-Route::get('posts/edit/{id}','PostController@edit');
-Route::get('posts/edit/{id}','PostController@updete');
+Route::resource('posts', 'PostController', ['only' => ['index','show', 'create', 'store']]);
+
+Route::get('posts/edit/{id}', 'PostController@edit');
+ 
+
+Route::post('posts/delete/{id}', 'PostController@destroy');
